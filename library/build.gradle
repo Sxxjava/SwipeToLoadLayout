@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'//添加
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 24
+        versionCode 100
+        versionName "1.0.0"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    provided 'com.android.support:support-v4:24.2.0'
+}
+
+//添加
+publish {
+    userOrg = 'szhynet'//bintray.com用户名
+    groupId = 'com.szhynet.widget'//jcenter上的路径
+    artifactId = 'SwipeToLoadLayout'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'SwipeToLoadLayout Libs'//描述，不重要
+    website = 'http://github.com/sxxjava/SwipeToLoadLayout'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
